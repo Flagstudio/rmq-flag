@@ -1,0 +1,14 @@
+/vendor
+/.idea
+/.vscode
+/.vagrant
+Homestead.json
+Homestead.yaml
+.env
+.phpunit.result.cache
+_ide_helper.php
+packagehash.txt
+.packagehash
+.php_cs.cache
+cghooks.lock
+core
