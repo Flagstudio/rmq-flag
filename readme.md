@@ -32,7 +32,7 @@ return [
     #...
     'actions' => [
         # for example
-        'update_users' => \App\Actions\Users\UpdateUserAction::class,
+        'update_users' => \App\Actions\Users\FromAuthUpdateUserAction::class,
     ]
     #...
 ];

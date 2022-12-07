@@ -30,7 +30,6 @@ class RmqService
         $connectedChannel = $this->getChannel();
 
         $this->declareExchange();
-        //$this->declareQueue($queue);
 
         $message = new AMQPMessage($messageBody, [
             'content_type'  => 'text/plain',

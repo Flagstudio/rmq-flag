@@ -38,7 +38,7 @@ class RmqPublishCommand extends Command
      */
     public function handle(): void
     {
-        /** @var \App\Services\RMQ\RMQService $rmq */
+        /** @var RMQService $rmq */
         $rmq = app(RmqService::class);
 
         $rmq->publish($this->argument('message') ?? 'Default Message in ' . now()->toString());
