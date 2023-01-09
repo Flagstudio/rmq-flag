@@ -8,7 +8,6 @@ use Exception;
 use Illuminate\Support\Facades\Log;
 use PhpAmqpLib\Message\AMQPMessage;
 use RuntimeException;
-use Flagstudio\RmqFlag\Actions\RMQ\RmqMessageHandleExecutorAction;
 
 class RmqHandleMessageAction
 {
