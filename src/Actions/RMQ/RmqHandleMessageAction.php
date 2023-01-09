@@ -2,6 +2,7 @@
 
 namespace Flagstudio\RmqFlag\Actions\RMQ;
 
+use Flagstudio\RmqFlag\Actions\RMQ\RmqMessageHandleExecutorAction;
 use Flagstudio\RmqFlag\Dto\RMQ\ActionMessageDto;
 use Exception;
 use Illuminate\Support\Facades\Log;
@@ -20,8 +21,10 @@ class RmqHandleMessageAction
     {
         $this->setActionMessageDto($message->body);
 
-        app(RmqMessageHandleExecutorAction::class)
-            ->execute($this->actionMessageDto);
+        if (isset($this->actionMessageDto)) {
+            app(RmqMessageHandleExecutorAction::class)
+                ->execute($this->actionMessageDto);
+        }
     }
 
     /**
