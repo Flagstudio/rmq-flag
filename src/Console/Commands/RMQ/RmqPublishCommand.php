@@ -38,9 +38,13 @@ class RmqPublishCommand extends Command
      */
     public function handle(): void
     {
+        if (empty($this->argument('message'))) {
+            return;
+        }
+
         /** @var RMQService $rmq */
         $rmq = app(RmqService::class);
 
-        $rmq->publish($this->argument('message') ?? 'Default Message in ' . now()->toString());
+        $rmq->publish($this->argument('message'));
     }
 }

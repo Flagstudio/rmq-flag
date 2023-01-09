@@ -34,7 +34,7 @@ class RmqHandleMessageAction
             $messageBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
 
             if (empty($messageBody->action) || empty($messageBody->payload)) {
-                throw new RuntimeException("'action' or 'payload' does not exists");
+                return;
             }
 
             $this->actionMessageDto = new ActionMessageDto(['action' => $messageBody->action, 'payload' => $messageBody->payload]);

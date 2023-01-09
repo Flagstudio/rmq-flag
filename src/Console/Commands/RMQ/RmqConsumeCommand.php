@@ -38,6 +38,10 @@ class RmqConsumeCommand extends Command
      */
     public function handle(): void
     {
+        if (empty($this->argument('queue')) && empty(config('rmq-flag.queue'))) {
+            return;
+        }
+
         /** @var RmqService $rmq */
         $rmq = app(RmqService::class);
 

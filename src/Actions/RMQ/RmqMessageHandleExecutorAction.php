@@ -12,8 +12,8 @@ class RmqMessageHandleExecutorAction
     {
         $action = Arr::get(config('rmq-flag.actions'), $actionMessageDto->action);
 
-        if (empty($actionMessageDto->payload)) {
-            throw new RuntimeException('Action payload is empty');
+        if (empty($action) || empty($actionMessageDto->payload)) {
+            return;
         }
 
         if (class_implements($action, RmqMessageHandleExecutable::class)) {
