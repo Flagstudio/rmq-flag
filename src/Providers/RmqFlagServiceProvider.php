@@ -2,8 +2,11 @@
 
 namespace Flagstudio\RmqFlag\Providers;
 
+use Flagstudio\RmqFlag\Actions\RMQ\RmqHandleMessageAction;
 use Flagstudio\RmqFlag\Console\Commands\RMQ\RmqConsumeCommand;
 use Flagstudio\RmqFlag\Console\Commands\RMQ\RmqPublishCommand;
+use Flagstudio\RmqFlag\Dto\RMQ\RmqOptionsDto;
+use Flagstudio\RmqFlag\Services\RMQ\RmqService;
 use Illuminate\Support\ServiceProvider;
 
 class RmqFlagServiceProvider extends ServiceProvider
@@ -39,5 +42,12 @@ class RmqFlagServiceProvider extends ServiceProvider
                 ]);
             }
         }
+
+        $this->app->bind(RmqService::class, function () {
+            return new RmqService(
+                new RmqOptionsDto(['exchange' => config('rmq-flag.exchange')]),
+                new RmqHandleMessageAction()
+            );
+        });
     }
 }

@@ -41,6 +41,11 @@ class RmqService
         $this->closeChannel();
     }
 
+    public function setOptions(RmqOptionsDto $rmqOptionsDto): void
+    {
+        $this->options = $rmqOptionsDto;
+    }
+
     public function listen(string $queue): void
     {
         $connectedChannel = $this->getChannel();
